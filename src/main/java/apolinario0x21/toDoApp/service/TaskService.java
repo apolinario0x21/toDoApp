@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TaskService {
@@ -13,15 +14,15 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     public List<Task> getAllTasks() {
-        return taskRepository.findAllByOrderByIdDesc();
+        return taskRepository.findAllByOrderByCreatedAtDesc();
     }
 
     public Task createTask(Task task) {
         return taskRepository.save(task);
     }
 
-    public void deleteTask(Long id) {
-        taskRepository.deleteById(id);
+    public void deleteTask(UUID id) {
+        taskRepository.deleteById(id); // deleta a tarefa com o id especificado
         // elemento existe?
     }
 

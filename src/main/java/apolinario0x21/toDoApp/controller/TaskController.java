@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:5173") // permitir que o frontend acesse a API
 @RestController
@@ -16,7 +17,7 @@ public class TaskController {
 
     @GetMapping
     public List<Task> getAllTasks() {
-        return taskService.getAllTasks();
+        return taskService.getAllTasks(); // retorna a lista de tarefas
     }
 
     @PostMapping
@@ -25,7 +26,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Long id) { // @PathVariable indica que o id é um parâmetro da URL
+    public void deleteTask(@PathVariable UUID id) { // @PathVariable indica que o id é um parâmetro da URL
         taskService.deleteTask(id);
     }
 }
