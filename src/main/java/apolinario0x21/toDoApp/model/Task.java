@@ -11,6 +11,7 @@ public class Task {
     @Id
     @GeneratedValue
     private UUID id;
+
     private String title;
     private boolean completed;
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -22,6 +23,7 @@ public class Task {
     public void setId(UUID id) {
         this.id = id;
     }
+
 
     public String getTitle() {
         return title;

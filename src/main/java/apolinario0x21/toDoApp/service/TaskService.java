@@ -1,5 +1,6 @@
 package apolinario0x21.toDoApp.service;
 
+import apolinario0x21.toDoApp.dto.TaskRequest;
 import apolinario0x21.toDoApp.model.Task;
 import apolinario0x21.toDoApp.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,9 @@ public class TaskService {
         return taskRepository.findAllByOrderByCreatedAtDesc();
     }
 
-    public Task createTask(Task task) {
+    public Task createTask(TaskRequest request) {
+        Task task = new Task();
+        task.setTitle(request.getTitle());
         return taskRepository.save(task);
     }
 
