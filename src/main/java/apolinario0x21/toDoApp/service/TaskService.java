@@ -13,7 +13,7 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+        return taskRepository.findAllByOrderByIdDesc();
     }
 
     public Task createTask(Task task) {
