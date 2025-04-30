@@ -1,6 +1,7 @@
 package apolinario0x21.toDoApp.service;
 
 import apolinario0x21.toDoApp.dto.TaskRequest;
+import apolinario0x21.toDoApp.exceptions.TaskNotFoundException;
 import apolinario0x21.toDoApp.model.Task;
 import apolinario0x21.toDoApp.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,17 @@ public class TaskService {
         Task task = new Task();
         task.setTitle(request.getTitle());
         return taskRepository.save(task);
+    }
+
+    public TaskRequest getTaskById(UUID id) {return null;}
+
+    public void updateTask(UUID id, TaskRequest request) {}
+
+    public void updateTaskStatus(UUID id, boolean completed) {
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException("Task not found"));
+        task.setCompleted(completed);
+        taskRepository.save(task);
     }
 
     public void deleteTask(UUID id) {
