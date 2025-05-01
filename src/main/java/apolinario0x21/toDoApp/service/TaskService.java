@@ -27,18 +27,23 @@ public class TaskService {
 
     public TaskRequest getTaskById(UUID id) {return null;}
 
-    public void updateTask(UUID id, TaskRequest request) {}
+    public void updateTaskTitle(UUID id, String newTitle) {
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException("Task not found. ID:" + id));
+        task.setTitle(newTitle);
+        taskRepository.save(task);
+    }
 
     public void updateTaskStatus(UUID id, boolean completed) {
         Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new TaskNotFoundException("Task not found"));
+                .orElseThrow(() -> new TaskNotFoundException("Status not found"));
         task.setCompleted(completed);
         taskRepository.save(task);
     }
 
     public void deleteTask(UUID id) {
         taskRepository.deleteById(id); // deleta a tarefa com o id especificado
-        // elemento existe?
+        // id/elemento existe?
     }
 
 

@@ -2,6 +2,7 @@ package apolinario0x21.toDoApp.controller;
 
 import apolinario0x21.toDoApp.dto.TaskRequest;
 import apolinario0x21.toDoApp.dto.TaskStatusUpdateRequest;
+import apolinario0x21.toDoApp.dto.UpdateTaskTitleDTO;
 import apolinario0x21.toDoApp.model.Task;
 import apolinario0x21.toDoApp.repository.TaskRepository;
 import apolinario0x21.toDoApp.service.TaskService;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /*
@@ -21,6 +23,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
+
     @Autowired
     private TaskService taskService;
     @Autowired
@@ -28,13 +31,20 @@ public class TaskController {
 
     @GetMapping
     public List<Task> getAllTasks() {
-        return taskService.getAllTasks(); // retorna a lista de tarefas
+        return taskService.getAllTasks();
     }
 
     @PostMapping
     public ResponseEntity<Task> createTask(@Valid @RequestBody TaskRequest request) { // @RequestBody indica que o corpo da requisição contém os dados do novo task
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(taskService.createTask(request));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateTaskTitle(@PathVariable UUID id,
+                                                @RequestBody @Valid UpdateTaskTitleDTO updateTaskTitle) {
+        taskService.updateTaskTitle(id, updateTaskTitle.getTitle());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PatchMapping
