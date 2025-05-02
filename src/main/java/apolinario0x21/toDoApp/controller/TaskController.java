@@ -6,6 +6,8 @@ import apolinario0x21.toDoApp.dto.TaskStatusUpdateRequestDTO;
 import apolinario0x21.toDoApp.dto.UpdateTaskTitleDTO;
 import apolinario0x21.toDoApp.model.Task;
 import apolinario0x21.toDoApp.service.TaskService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,13 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/tasks")
+@Tag(name = "Task")
 public class TaskController {
 
     @Autowired
     private TaskService taskService;
 
+    @Operation(summary = "Create a new task")
     @PostMapping
     public ResponseEntity<TaskResponseDTO> createTask(
             @Valid @RequestBody TaskRequestDTO request) { // @RequestBody indica que o corpo da requisição contém os dados do novo task
@@ -35,11 +39,13 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @Operation(summary = "Get a task by ID")
     @GetMapping
     public ResponseEntity<List<TaskResponseDTO>> findAllTasks() {
         return ResponseEntity.ok(taskService.findAllTasks());
     }
 
+    @Operation(summary = "Update a task title")
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateTitle(@PathVariable UUID id,
                                             @Valid @RequestBody UpdateTaskTitleDTO update) {
@@ -47,6 +53,7 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @Operation(summary = "Update a task status")
     @PatchMapping("/{id}")
     public ResponseEntity<Void> updateStatus(@PathVariable UUID id,
                                              @Valid @RequestBody TaskStatusUpdateRequestDTO update) {
@@ -54,6 +61,7 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @Operation(summary = "Delete a task by ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable UUID id) { // @PathVariable indica que o id é um parâmetro da URL
         taskService.deleteTask(id);
