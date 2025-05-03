@@ -10,15 +10,14 @@
 
 
 Uma aplicação Backend para gerenciamento de tarefas, com backend em **Spring Boot**, usando **PostgreSQL** como banco de dados e **Docker** para conteinerização.
-
 Obs.: Frontend em **React** encontra-se no repositório: [ToDoApp-Frontend](https://github.com/apolinario0x21/toDoApp_Frontend)
 
----
 
 ## Sobre o Projeto
 ToDoApp é uma aplicação de gerenciamento de tarefas completa que permite aos usuários gerenciar suas atividades.
 O backend foi desenvolvido seguindo as melhores práticas do Java e Spring Boot.
----
+
+
 ## 🚀 Tecnologias Utilizadas
 - Java 17
 - Spring Boot 3.4
@@ -28,7 +27,6 @@ O backend foi desenvolvido seguindo as melhores práticas do Java e Spring Boot.
 - Docker
 - Springdoc OpenAPI (Swagger UI)
 
----
 
 ## ⚙️ Pré-requisitos
 
@@ -39,8 +37,6 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 - **Node.js** e **npm** ou **yarn** (para o frontend React, se você for executá-lo separadamente)
 - **Docker** (para conteinerização)
 - **Docker Compose** (opcional, mas recomendado para facilitar a execução com PostgreSQL)
-
----
 
 
 ## 🛠️ Configuração do Ambiente
@@ -78,7 +74,6 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
     ```
     O perfil `dev` ativa o banco de dados H2 e outras configurações específicas para desenvolvimento.    
 
----
 
 ## 📦 Executando o projeto com Docker
 
@@ -95,7 +90,7 @@ docker build -t todo-app .
 ```bash
 docker-compose up -d
 ```
----
+
 
 ## 🧪 Acessos úteis
 Swagger UI: `http://localhost:8080/swagger-ui.html`
@@ -112,7 +107,6 @@ PostgreSQL (prod):
     Usuário: myuser
     Senha: mypassword
 
----
 
 ## 📂 Estrutura do Projeto (Backend)
 - src/
@@ -130,7 +124,6 @@ PostgreSQL (prod):
         - `resources/` - application.properties
     - `test/` - Testes
 
----
 
 ## ✅ Funcionalidades
 - CRUD completo de tarefas.
@@ -164,7 +157,7 @@ PostgreSQL (prod):
 ### Segurança
 - Spring Security para autenticação e autorização com JWT
 - Proteção contra CSRF, XSS e SQL Injection
----
+
 
 ## 📚 Documentação da API - Tasks
 ### Endpoints
@@ -176,8 +169,6 @@ PostgreSQL (prod):
 | PUT    | `/api/tasks/{id}`       | Atualiza o título de uma tarefa    |
 | PATCH  | `/api/tasks/{id}`       | Atualiza o status de uma tarefa    |
 | DELETE | `/api/tasks/{id}`       | Remove uma tarefa                  |
-
----
 
 
 ## 🤝 Contribuição
