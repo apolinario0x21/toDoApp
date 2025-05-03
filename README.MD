@@ -10,6 +10,7 @@
 
 
 Uma aplicação Backend para gerenciamento de tarefas, com backend em **Spring Boot**, usando **PostgreSQL** como banco de dados e **Docker** para conteinerização.
+
 Obs.: Frontend em **React** encontra-se no repositório: [ToDoApp-Frontend](https://github.com/apolinario0x21/toDoApp_Frontend)
 
 
