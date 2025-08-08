@@ -16,8 +16,11 @@ O frontend correspondente em **React** pode ser encontrado no repositório: [ToD
 - **PostgreSQL** (Produção) / **H2** (Desenvolvimento)
 - **Lombok**
 - **Docker Compose**
-- **JUnit 5** e **Mockito** (para testes)
+- **JUnit 5** e **Mockito** 
 - **Springdoc OpenAPI** (Swagger UI)
+- **SLF4J** e **Logback** (para logging)
+- **Spring Boot Actuator** (para monitoramento)
+
 
 ## ⚙️ Configuração e Execução do Ambiente
 
@@ -71,14 +74,38 @@ O projeto conta com uma suíte de testes de unidade implementada com JUnit e Moc
     ```
     Este comando executa todos os testes localizados na pasta `src/test`.
 
+
+## 📈 Monitoramento com Spring Boot Actuator
+O Actuator foi implementado para fornecer informações sobre a saúde e o desempenho da aplicação em tempo real. Ele expõe uma série de endpoints REST.
+
+### Endpoints Principais:
+- **`GET /actuator/health`**: Verifica o status de saúde da aplicação.
+
+
+
 ## ✅ Funcionalidades
 - CRUD completo de tarefas.
-- Validações de dados.
-- API documentada com Swagger UI.
-- Ambiente de produção com PostgreSQL e desenvolvimento com H2.
+- Atualização de título e status.
+- Validações com Jakarta Bean Validation.
+- API documentada com Swagger.
+- Perfil `dev` com H2 e `prod` com PostgreSQL.
+- Logging com SLF4J.
+- Monitoramento com Spring Boot Actuator.
 - Testes de unidade com JUnit e Mockito.
 
-## 📚 Acessos Úteis
+
+## 📚 Documentação da API - Tasks
+### Endpoints
+
+| Método | Endpoint                | Descrição                          |
+|--------|-------------------------|------------------------------------|
+| POST   | `/api/tasks`            | Cria uma nova tarefa               |
+| GET    | `/api/tasks`            | Lista todas as tarefas             |
+| PUT    | `/api/tasks/{id}`       | Atualiza o título de uma tarefa    |
+| PATCH  | `/api/tasks/{id}`       | Atualiza o status de uma tarefa    |
+| DELETE | `/api/tasks/{id}`       | Remove uma tarefa    
+
+## Acessos Úteis
 - **Swagger UI (Documentação da API)**: `http://localhost:8080/swagger-ui.html`
 - **H2 Console (somente no modo dev)**: `http://localhost:8080/h2-console`
     - JDBC URL: `jdbc:h2:mem:todoapp_db`
@@ -90,40 +117,40 @@ O projeto conta com uma suíte de testes de unidade implementada com JUnit e Moc
 ```
 toDoApp/
 ├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── apolinario0x21/toDoApp/
-│   │   │       ├── config/
-│   │   │       │   ├── SwaggerConfig.java
-│   │   │       │   └── WebConfig.java
-│   │   │       ├── controller/
-│   │   │       │   └── TaskController.java
-│   │   │       ├── dto/
-│   │   │       │   ├── TaskRequestDTO.java
-│   │   │       │   ├── TaskResponseDTO.java
-│   │   │       │   ├── TaskStatusUpdateRequestDTO.java
-│   │   │       │   └── UpdateTaskTitleDTO.java
-│   │   │       ├── exceptions/
-│   │   │       │   ├── GlobalExceptionHandler.java
-│   │   │       │   └── TaskNotFoundException.java
-│   │   │       ├── model/
-│   │   │       │   └── Task.java
-│   │   │       ├── repository/
-│   │   │       │   └── TaskRepository.java
-│   │   │       ├── service/
-│   │   │       │   └── TaskService.java
-│   │   │       └── ToDoAppApplication.java
-│   │   └── resources/
-│   │       ├── application.properties
-│   │       ├── application-dev.properties
-│   │       └── application-prod.properties
-│   └── test/
-│       └── java/
-│           └── apolinario0x21/toDoApp/
-│               ├── service/
-│               │   └── TaskServiceTest.java
-│               └── ToDoAppApplicationTests.java
-└── 
+   ├── main/
+   │   ├── java/
+   │   │   └── apolinario0x21/toDoApp/
+   │   │       ├── config/
+   │   │       │   ├── SwaggerConfig.java
+   │   │       │   └── WebConfig.java
+   │   │       ├── controller/
+   │   │       │   └── TaskController.java
+   │   │       ├── dto/
+   │   │       │   ├── TaskRequestDTO.java
+   │   │       │   ├── TaskResponseDTO.java
+   │   │       │   ├── TaskStatusUpdateRequestDTO.java
+   │   │       │   └── UpdateTaskTitleDTO.java
+   │   │       ├── exceptions/
+   │   │       │   ├── GlobalExceptionHandler.java
+   │   │       │   └── TaskNotFoundException.java
+   │   │       ├── model/
+   │   │       │   └── Task.java
+   │   │       ├── repository/
+   │   │       │   └── TaskRepository.java
+   │   │       ├── service/
+   │   │       │   └── TaskService.java
+   │   │       └── ToDoAppApplication.java
+   │   └── resources/
+   │       ├── application-dev.properties
+   │       └── application-prod.properties
+   └── test/
+       └── java/
+           └── apolinario0x21/toDoApp/
+               ├── service/
+               │   └── TaskServiceTest.java
+               └── ToDoAppApplicationTests.java
+ 
+ 
 ```
 
 ## 🔮 Roadmap
@@ -136,3 +163,7 @@ Se você quiser contribuir, siga as boas práticas de desenvolvimento:
 - Crie uma nova branch para sua feature (`git checkout -b feature/minha-feature`).
 - Faça seus commits.
 - Abra um Pull Request.
+
+## Licença
+
+Este projeto é distribuído sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
