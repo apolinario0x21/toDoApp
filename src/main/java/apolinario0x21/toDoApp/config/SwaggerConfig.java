@@ -19,7 +19,7 @@ public class SwaggerConfig {
                                 .termsOfService("http://swagger.io/terms/")
                                 .contact(new io.swagger.v3.oas.models.info.Contact()
                                         .name("apolinario0x21")
-                                        .url("https://apolinario0x21.github.io/my/"))
+                                        .url("https://apolinario.netlify.app/"))
                 );
     }
 }

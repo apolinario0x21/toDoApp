@@ -4,12 +4,10 @@ import apolinario0x21.toDoApp.dto.TaskRequestDTO;
 import apolinario0x21.toDoApp.dto.TaskResponseDTO;
 import apolinario0x21.toDoApp.dto.TaskStatusUpdateRequestDTO;
 import apolinario0x21.toDoApp.dto.UpdateTaskTitleDTO;
-import apolinario0x21.toDoApp.model.Task;
 import apolinario0x21.toDoApp.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +37,7 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @Operation(summary = "Get a task by ID")
+    @Operation(summary = "Get all task")
     @GetMapping
     public ResponseEntity<List<TaskResponseDTO>> findAllTasks() {
         return ResponseEntity.ok(taskService.findAllTasks());
