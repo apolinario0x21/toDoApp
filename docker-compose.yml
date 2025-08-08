@@ -23,6 +23,8 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
       - logging.level.root=INFO
       - logging.level.apolinario0x21.toDoApp=DEBUG
+      # Configurações do Actuator
+      - management.endpoints.web.exposure.include=health
 
 volumes:
   postgres-data:
